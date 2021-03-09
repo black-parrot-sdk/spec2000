@@ -2,3 +2,5 @@ lfs.c
 *.o
 *.net
 *.arch.in
+*.riscv
+smred.*
