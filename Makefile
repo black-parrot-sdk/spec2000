@@ -6,7 +6,7 @@ all:
 	$(MAKE) $(RUNS)
 
 spec2000:
-	git submodule update --init --recursive --merge spec2000
+	-git clone git@github.com:black-parrot-sdk/spec2000-private spec2000
 
 %.riscv: spec2000
 	$(MAKE) -f Makefile.$*

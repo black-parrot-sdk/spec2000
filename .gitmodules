@@ -1,5 +1,0 @@
-[submodule "spec2000"]
-	path = spec2000
-	url = https://github.com/black-parrot-sdk/spec2000-private.git
-    ignore = dirty
-    update = none
