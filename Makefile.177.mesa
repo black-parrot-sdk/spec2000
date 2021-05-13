@@ -22,8 +22,8 @@ $(BENCHMARK_INPS): %:
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -DRAWDEBUG
 
-ARGC=7
-ARGV=mesa -frames 1 -meshfile $(BENCHMARK_INPS) -ppmfile mesa0.ppm
+ARGC=5
+ARGV=mesa -frames 1 -meshfile $(BENCHMARK_INPS)
 
 # lfs disk image size
 LFS_BLOCK_SIZE = 128
