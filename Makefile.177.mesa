@@ -1,9 +1,5 @@
-.DEFAULT_GOAL = all
-
 SUITE = CFP2000
 BENCHMARK = 177.mesa
-
-MAX_CYCLES = 1000000000
 
 BENCHMARK_OBJS = accum.o alphabuf.o alpha.o api1.o api2.o attrib.o bitmap.o blend.o \
 		clip.o colortab.o context.o copypix.o depth.o dlist.o drawpix.o \
@@ -22,7 +18,6 @@ $(BENCHMARK_INPS): %:
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -DRAWDEBUG
 
-ARGC=5
 ARGV=mesa -frames 1 -meshfile $(BENCHMARK_INPS)
 
 # lfs disk image size

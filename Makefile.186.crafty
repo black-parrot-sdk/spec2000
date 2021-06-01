@@ -1,9 +1,5 @@
-.DEFAULT_GOAL = all
-
 SUITE = CINT2000
 BENCHMARK = 186.crafty
-
-MAX_CYCLES = 1000000000
 
 BENCHMARK_OBJS = \
 	searchr.o search.o repeat.o next.o nextr.o history.o \
@@ -13,21 +9,19 @@ BENCHMARK_OBJS = \
 	input.o interupt.o iterate.o main.o option.o output.o \
 	phase.o ponder.o preeval.o root.o setboard.o time.o validate.o
 
-INPUT_TYPE = smred
+INPUT_TYPE = test
 
 BENCHMARK_INPS = crafty.in
 
 $(BENCHMARK_INPS): %:
-	cp $(BENCHMARK_DIR)/data/test/input/$@ $@
+	cp $(BENCHMARK_DIR)/data/$(INPUT_TYPE)/input/$@ $@
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -DRAW_ARCH -DNO_GRAPHICS
 
-ARGC=2
-ARGV=crafty input=crafty.in
+ARGV=crafty input=$(BENCHMARK_INPS)
 
 # lfs disk image size
 LFS_BLOCK_SIZE = 128
 LFS_BLOCK_COUNT = 1024 # 128K
-
 
 include ./Makefile.common

@@ -1,5 +1,3 @@
-.DEFAULT_GOAL = all
-
 SUITE = CINT2000
 BENCHMARK = 300.twolf
 
@@ -29,7 +27,6 @@ $(BENCHMARK_INPS): %:
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000
 
-ARGC=2
 ARGV=twolf $(INPUT_TYPE)
 
 # lfs disk image size

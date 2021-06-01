@@ -1,9 +1,5 @@
-.DEFAULT_GOAL = all
-
 SUITE = CFP2000
 BENCHMARK = 183.equake
-
-MAX_CYCLES = 1000000000
 
 BENCHMARK_OBJS = quake.o
 
@@ -14,7 +10,6 @@ $(BENCHMARK_INPS): %:
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000
 
-ARGC=5
 ARGV=equake -i $(BENCHMARK_INPS) -o inp.out
 
 # lfs disk image size

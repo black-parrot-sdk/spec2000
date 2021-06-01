@@ -1,5 +1,8 @@
 BENCHMARKS = \
   164.gzip   \
+  171.swim   \
+  172.mgrid  \
+  173.applu  \
   175.vpr    \
   177.mesa   \
   181.mcf    \

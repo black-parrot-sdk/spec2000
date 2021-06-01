@@ -1,0 +1,21 @@
+SUITE = CFP2000
+BENCHMARK = 173.applu
+
+BENCHMARK_OBJS = applu.o
+
+INPUT_TYPE = test
+INPUT_FILE = applu.in
+BENCHMARK_INPS = stdin
+
+$(BENCHMARK_INPS): %:
+	cp $(BENCHMARK_DIR)/input/$(INPUT_TYPE)/$(INPUT_FILE) $@
+
+BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -fno-underscoring
+
+ARGV=applu
+
+# lfs disk image size
+LFS_BLOCK_SIZE = 128
+LFS_BLOCK_COUNT = 8192 # 1MB
+
+include ./Makefile.common

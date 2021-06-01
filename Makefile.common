@@ -8,7 +8,7 @@ empty:=
 space:= $(empty) $(empty)
 
 vpath %.c $(BENCHMARK_DIR)/src.raw
-vpath %.h $(BENCHMARK_DIR)/src.raw
+vpath %.f $(BENCHMARK_DIR)/src.raw
 vpath %.c ./rawlib
 vpath %.S ./initlib
 vpath %.c ./initlib
@@ -20,12 +20,12 @@ space:= $(empty) $(empty)
 RISCV_GCC       = $(CROSS_COMPILE)gcc
 RISCV_GCC_OPTS  = -O2 -mabi=lp64 -march=rv64imafd -mcmodel=medany -mstrict-align -I$(BP_INCLUDE_DIR)
 RISCV_GCC_OPTS += -Irawlib $(BENCHMARK_DEFS)
-RISCV_GCC_OPTS += -D__init_argc=$(ARGC) -D__init_argv=\"$(subst $(space),\"$(comma)\",$(strip $(ARGV)))\"
-RISCV_LINK_OPTS = -T $(BP_LINKER_DIR)/riscv.ld -L$(BP_LIB_DIR) -static -lm -Wl,--whole-archive -lperch -Wl,--no-whole-archive
+RISCV_GCC_OPTS += -D__init_argc=$(words $(ARGV)) -D__init_argv=\"$(subst $(space),\"$(comma)\",$(strip $(ARGV)))\"
+RISCV_LINK_OPTS = -T $(BP_LINKER_DIR)/riscv.ld -L$(BP_LIB_DIR) -static -lgfortran -lm -Wl,--whole-archive -lperch -Wl,--no-whole-archive
 
-OBJECT_FILES = lfs.o args.o raw.o $(BENCHMARK_OBJS)
+OBJECT_FILES = lfs.o extra_init.o raw.o $(BENCHMARK_OBJS)
 
-SRC_EXT = S c
+SRC_EXT = S c f
 
 define compile_rule
 %.o: %.$1

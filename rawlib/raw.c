@@ -1,6 +1,9 @@
 #include "raw.h"
 #include <stdio.h>
 
+#define timebegin_() timebegin()
+#define timeend_()   timeend()
+
 void timebegin() {
 }
 

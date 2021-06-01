@@ -1,0 +1,21 @@
+SUITE = CFP2000
+BENCHMARK = 171.swim
+
+BENCHMARK_OBJS = swim.o
+
+INPUT_TYPE = test
+
+BENCHMARK_INPS = swim.in
+
+$(BENCHMARK_INPS): %:
+	cp $(BENCHMARK_DIR)/input/$(INPUT_TYPE)/$@ $@
+
+BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -fno-underscoring
+
+ARGV=swim
+
+# lfs disk image size
+LFS_BLOCK_SIZE = 128
+LFS_BLOCK_COUNT = 8192 # 1MB
+
+include ./Makefile.common

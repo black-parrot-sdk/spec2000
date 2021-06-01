@@ -1,9 +1,5 @@
-.DEFAULT_GOAL = all
-
 SUITE = CFP2000
 BENCHMARK = 188.ammp
-
-MAX_CYCLES = 1000000000
 
 BENCHMARK_OBJS = \
 	ammp.o box.o eval.o analyze.o anonbon.o noel.o animate.o atoms.o \
@@ -16,7 +12,7 @@ INPUT_TYPE = smred
 
 BENCHMARK_INPS = ammp.in $(INPUT_TYPE).ammp
 
-$(BENCHMARK_INPS): $(INPUT_TYPE).%:
+%.ammp:
 	cp $(BENCHMARK_DIR)/input/$@ $@
 
 ammp.in:
@@ -25,7 +21,6 @@ ammp.in:
 
 BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -DNOTIME
 
-ARGC=1
 ARGV=ammp
 
 # lfs disk image size

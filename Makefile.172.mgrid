@@ -1,0 +1,21 @@
+SUITE = CFP2000
+BENCHMARK = 172.mgrid
+
+BENCHMARK_OBJS = mgrid.o
+
+INPUT_TYPE = test
+INPUT_FILE = mgrid.in
+BENCHMARK_INPS = stdin
+
+$(BENCHMARK_INPS): %:
+	cp $(BENCHMARK_DIR)/input/$(INPUT_TYPE)/$(INPUT_FILE) $@
+
+BENCHMARK_DEFS = -D__raw__ -DSPEC_CPU2000 -fno-underscoring
+
+ARGV=mgrid
+
+# lfs disk image size
+LFS_BLOCK_SIZE = 128
+LFS_BLOCK_COUNT = 8192 # 1MB
+
+include ./Makefile.common
