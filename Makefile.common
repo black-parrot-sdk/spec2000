@@ -18,7 +18,7 @@ empty:=
 space:= $(empty) $(empty)
 
 RISCV_GCC       = $(CROSS_COMPILE)gcc
-RISCV_GCC_OPTS  = -O2 -mabi=lp64d -march=rv64imafdc -mcmodel=medany -mstrict-align -I$(BP_SDK_INCLUDE_DIR)
+RISCV_GCC_OPTS  = -O2 -mabi=lp64d -march=rv64gc -mcmodel=medany -mstrict-align -fcommon -I$(BP_SDK_INCLUDE_DIR)
 RISCV_GCC_OPTS += -Irawlib $(BENCHMARK_DEFS)
 RISCV_GCC_OPTS += -D__init_argc=$(words $(ARGV)) -D__init_argv=\"$(subst $(space),\"$(comma)\",$(strip $(ARGV)))\"
 RISCV_LINK_OPTS = -T $(BP_SDK_LINKER_DIR)/riscv.ld -L$(BP_SDK_LIB_DIR) -static -lgfortran -lm -Wl,--whole-archive -lperch -Wl,--no-whole-archive
