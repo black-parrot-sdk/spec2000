@@ -4,3 +4,4 @@ lfs.c
 *.arch.in
 *.riscv
 smred.*
+spec2000
