@@ -1,6 +1,4 @@
-TOP          ?= $(shell git rev-parse --show-toplevel)
-BP_SDK_DIR   ?= $(TOP)/..
-BENCHMARK_DIR = $(BP_SDK_DIR)/spec2000/spec2000/benchmarks/spec2000/$(SUITE)/$(BENCHMARK)
+BENCHMARK_DIR = $(CURDIR)/spec2000/benchmarks/spec2000/$(SUITE)/$(BENCHMARK)
 MKLFS = dramfs_mklfs
 
 comma:= ,
@@ -17,11 +15,12 @@ comma:= ,
 empty:=
 space:= $(empty) $(empty)
 
-RISCV_GCC       = $(CROSS_COMPILE)gcc
+RISCV_GCC       = $(CROSS_COMPILE)gcc -std=gnu89
 RISCV_GCC_OPTS  = -O2 -mabi=lp64d -march=rv64gc -mcmodel=medany -mstrict-align -fcommon -I$(BP_SDK_INCLUDE_DIR)
+RISCV_GCC_OPTS += -Wno-implicit-function-declaration -Wno-implicit-int -Wno-return-mismatch
 RISCV_GCC_OPTS += -Irawlib $(BENCHMARK_DEFS)
 RISCV_GCC_OPTS += -D__init_argc=$(words $(ARGV)) -D__init_argv=\"$(subst $(space),\"$(comma)\",$(strip $(ARGV)))\"
-RISCV_LINK_OPTS = -static -lgfortran -lm --specs=perch.specs --specs=dramfs.specs
+RISCV_LINK_OPTS = -static -lgfortran -lm --specs=dramfs.specs --specs=perch.specs
 
 OBJECT_FILES = lfs.o extra_init.o raw.o $(BENCHMARK_OBJS)
 
