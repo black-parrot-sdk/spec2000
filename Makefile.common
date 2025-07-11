@@ -1,5 +1,5 @@
 BENCHMARK_DIR = $(CURDIR)/spec2000/benchmarks/spec2000/$(SUITE)/$(BENCHMARK)
-MKLFS = dramfs_mklfs
+MKLFS = riscv64-unknown-elf-dramfs_mklfs
 
 comma:= ,
 empty:=
